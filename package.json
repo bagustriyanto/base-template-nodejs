@@ -1,0 +1,38 @@
+{
+  "name": "saraya.admin",
+  "version": "1.0.0",
+  "description": "admin template with stisla admin",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon ./bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "saraya",
+    "admin"
+  ],
+  "author": "bagus putra t",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cls-hooked": "^4.2.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-jwt": "^5.3.1",
+    "i18n": "^0.8.4",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.24.0",
+    "morgan": "^1.9.1",
+    "pbkdf2": "^3.0.17",
+    "pg": "^7.15.0",
+    "pg-hstore": "^2.3.3",
+    "random-bytes": "^1.0.0",
+    "sequelize": "^5.21.3",
+    "touch-cli": "0.0.1",
+    "vue-cookies": "^1.6.1",
+    "vuelidate": "^0.7.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "root",
+    "database": "saraya",
+    "host": "127.0.0.1",
+    "port": 5432,
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "root",
+    "database": "saraya-test",
+    "host": "127.0.0.1",
+    "port": 5432,
+    "dialect": "postgres"
+  },
+  "token": {
+    "development": {
+      "issuer": "admin.saraya.nodejs",
+      "audience": "public.saraya",
+      "secret": "165110a0-c609-4203-9b30-605ac375df79",
+      "expiresIn": "30m"
+    }
+  }
+}
