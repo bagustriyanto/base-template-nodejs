@@ -116,6 +116,7 @@ export default {
 				if (data.status) {
 					vm.$cookies.set("token", data.token, "29min")
 					vm.$cookies.set("username", vm.form.username, "29min")
+					vm.$cookies.set("credential_id", data.data.id)
 					vm.$cookies.set("lang", "id")
 					this.$router.push({ path: "/administrator/dashboard" })
 				}

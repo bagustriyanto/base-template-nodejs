@@ -7,7 +7,8 @@ module.exports = function(sequelize, DataTypes) {
 			id: {
 				type: DataTypes.BIGINT,
 				allowNull: false,
-				primaryKey: true
+				primaryKey: true,
+				autoIncrement: true
 			},
 			title: {
 				type: DataTypes.STRING,
@@ -49,7 +50,7 @@ module.exports = function(sequelize, DataTypes) {
 	)
 
 	blog.associate = models => {
-		blog.hasOne(models.credentials, {
+		blog.belongsTo(models.credentials, {
 			foreignKey: "credential_id"
 		})
 	}

@@ -92,7 +92,6 @@ Vue.use(
 )
 
 axios.defaults.baseURL = "http://localhost:8000/api"
-axios.defaults.headers.common["Authorization"] = `Bearer ${Vue.$cookies.get("token")}`
 axios.defaults.headers.common["Cookies"] = `lang = ${Vue.$cookies.get("lang")};`
 
 Vue.prototype.$owner = "bagus"

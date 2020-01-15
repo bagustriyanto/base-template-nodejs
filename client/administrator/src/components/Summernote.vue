@@ -14,9 +14,19 @@ export default {
 				height: 300, // set editor height
 				minHeight: null, // set minimum height of editor
 				maxHeight: null, // set maximum height of editor
+				dialogsInBody: true,
 				callbacks: {
 					onChange: function(contents) {
 						vm.$emit("input", contents)
+					},
+					onImageUpload: function(file) {
+						console.log(file)
+						// editor.insertImage(welEditable, url);
+					},
+					onMediaDelete: function(target) {
+						console.log(target)
+						// alert(target[0].src)
+						// deleteFile(target[0].src)
 					}
 				}
 			})

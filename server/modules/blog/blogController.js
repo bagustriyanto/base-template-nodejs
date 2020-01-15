@@ -55,7 +55,7 @@ module.exports = {
 		blogService
 			.findAll(req)
 			.then(result => {
-				baseResponse = { status: true, message: i18n.__("INFO-9999") }
+				baseResponse = { status: true, message: i18n.__("INFO-9999"), list: result }
 
 				res.status(200).send(baseResponse)
 			})
