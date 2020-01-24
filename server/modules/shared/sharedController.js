@@ -2,6 +2,7 @@ const menu = require("../../models").menu
 const i18n = require("i18n")
 const roleMap = require("../../models").role_map
 const menuMap = require("../../models").menu_role_map
+const uuid = require("uuid")
 
 module.exports = {
 	language(req, res) {
@@ -59,6 +60,24 @@ module.exports = {
 
 		const parent = Promise.all([roleMapData]).then(result => {
 			return getChild(result[0])
+		})
+	},
+	uploadFile(req, res) {
+		if (!req.files || Object.keys(req.files).length === 0) {
+			res.status(400).send("No file were uploaded")
+		}
+
+		let file = req.files.file
+		let id = uuid.v4()
+		let splitFile = file.name.split(".")
+		let fileFormat = splitFile[splitFile.length - 1]
+		let folderType = req.body.type === "1" ? "image" : "file"
+		let fullPath = `/public/upload/${folderType}/${id}.${fileFormat}`
+		let returnPath = `/upload/${folderType}/${id}.${fileFormat}`
+
+		file.mv(`${appRoot}/${fullPath}`, function(err) {
+			if (err) res.status(400).send({ message: "error", status: false })
+			res.status(200).send({ message: "success", data: returnPath, status: true })
 		})
 	}
 }

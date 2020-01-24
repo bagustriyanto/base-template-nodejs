@@ -4,6 +4,9 @@
 	</div>
 </template>
 <script>
+import axios from "axios"
+import constant from "../assets/js/constants.js"
+
 export default {
 	name: "Summernote",
 	props: ["id", "value"],
@@ -17,11 +20,11 @@ export default {
 				dialogsInBody: true,
 				callbacks: {
 					onChange: function(contents) {
+						console.log(contents)
 						vm.$emit("input", contents)
 					},
 					onImageUpload: function(file) {
-						console.log(file)
-						// editor.insertImage(welEditable, url);
+						vm.uploadImage(file[0], constant.fileType.image)
 					},
 					onMediaDelete: function(target) {
 						console.log(target)
@@ -31,6 +34,21 @@ export default {
 				}
 			})
 		})
+	},
+	methods: {
+		uploadImage: function(file, fileType) {
+			let vm = this
+			let formData = new FormData()
+			formData.append("file", file)
+			formData.append("type", fileType)
+
+			axios.post("/shared/uploadFile", formData).then(({ data }) => {
+				window.$(`#${vm.id}`).summernote("insertImage", `${constant.apiEndPoint}${data.data}`)
+			})
+		}
+	},
+	removeImage: function(sourceFile) {
+		console.log(sourceFile)
 	}
 }
 </script>

@@ -232,7 +232,7 @@ export default {
 	validations: {
 		form: {
 			title: { required },
-			contents: { required },
+			content: { required },
 			tags: { required }
 		}
 	},
@@ -294,7 +294,7 @@ export default {
 					.post("/blog", vm.form)
 					.then(({ data }) => {
 						window.$("#loading").hide()
-						vm.$alertMessage(data.message, data.status, vm.formCloseCallback(data.status))
+						vm.$alertMessage(data.message, Number(data.status), vm.formCloseCallback(data.status))
 						if (data.status) vm.getAll()
 					})
 					.catch(({ response }) => {
@@ -306,7 +306,7 @@ export default {
 					.puth(`/blog/${vm.form.id}`, vm.form)
 					.then(({ data }) => {
 						window.$("#loading").hide()
-						vm.$alertMessage(data.message, data.status, vm.formCloseCallback(data.status))
+						vm.$alertMessage(data.message, Number(data.status), vm.formCloseCallback(data.status))
 						if (data.status) vm.getAll()
 					})
 					.catch(({ response }) => {
